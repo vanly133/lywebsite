@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vintage Cute Scrapbook - Full Version</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    @keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fff6f9 0%, #ff6f91 70%);
+  border-radius: 50%;
+  animation: sparkle 2s infinite ease-in-out;
+  pointer-events: none;
+  user-select: none;
+}
+@keyframes bgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(270deg, #fff0f6, #ffe6eb, #fff0f6);
+  background-size: 600% 600%;
+  animation: bgGradient 20s ease infinite;
+}
+/* Hiệu ứng nhấp nháy nhẹ cho tiêu đề */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); color: #ff6f91; }
+  50% { transform: scale(1.05); color: #ff95a5; }
+}
+
+.cover-title {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Hiệu ứng nhún nhảy cho nút Bắt đầu */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+.start-button {
+  animation: bounce 3s infinite;
+}
+
+/* Hiệu ứng fade-in cho cover content */
+.cover-content {
+  opacity: 0;
+  animation: fadeIn 1.2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+    body {
+      background: url('https://www.transparenttextures.com/patterns/paper.png') repeat;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #555;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+        font-family: 'Pacifico', cursive;
+  font-size: 3.5rem;
+  color: #ff6f91;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  
+
+  /* Nền gradient cho chữ */
+  background: linear-gradient(45deg, #ff6f91, #ff95a5, #ffd1dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Hiệu ứng chuyển sắc gradient chạy */
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+
+  /* Viền nhẹ cho chữ */
+  -webkit-text-stroke: 1px #fff;
+
+  /* Bo góc và thêm icon nhỏ */
+  position: relative;
+  padding: 0.5rem 1rem;
+}
+
+h1::before {
+  content: "✨";  /* icon lấp lánh */
+  position: absolute;
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+}
+
+h1::after {
+  content: "✨";
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+}
+
+/* Animation gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    #mainContent {
+      max-width: 960px;
+      margin: 0 auto 60px auto;
+      display: none;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    .thumb {
+      width: 140px;
+      border: 2px solid #ffb6c1;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(255, 107, 145, 0.5);
+      background: #fff0f6;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 18px;
+    }
+    .thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 107, 145, 0.4);
+
+  animation: none;
+}
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    .thumb img {
+      width: 100%;
+      border-radius: 14px 14px 0 0;
+      display: block;
+    }
+    .thumb-caption {
+      text-align: center;
+      padding: 10px 6px;
+      font-size: 0.9rem;
+      color: #ff6f91;
+      font-weight: 600;
+      font-family: 'Pacifico', cursive;
+    }
+    .fullscreen-page {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff0f6;
+      z-index: 1000;
+      padding: 20px 60px;
+      box-sizing: border-box;
+      text-align: center;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      
+    }
+    .fullscreen-page.active {
+      display: flex;
+    }
+    .photo-frame {
+      max-width: 90vw;
+      max-height: 90vh;
+      border: 5px solid #ffb6c1;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 107, 145, 0.5);
+      overflow: hidden;
+      background: white;
+      position: relative;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 20px;
+      transition: transform 0.3s ease;
+    }
+    .photo-frame img:hover {
+      transform: scale(1.05);
+    }
+    .caption {
+      margin-top: 18px;
+      font-size: 1.2rem;
+      color: #ff6f91;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px #ffb6c1;
+    }
+     .sticker {
+      position: absolute;
+      max-width: 80px;
+      opacity: 0.9;
+      pointer-events: none;
+      user-select: none;
+    }
+    .sticker1 {
+      top: 40px;
+      left: 50px;
+    }
+    .sticker2 {
+      top: 70px;
+      right: 60px;
+    }
+    .sticker3 {
+      top: 30px;
+      left: 70px;
+    } 
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ff8ca3;
+      border: none;
+      color: white;
+      font-size: 3.5rem;
+      padding: 10px 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 6px 15px rgba(255, 140, 163, 0.5);
+      user-select: none;
+      transition: background-color 0.3s ease;
+      z-index: 120;
+    }
+    .nav-arrow:hover {
+      background-color: #ff5a78;
+      box-shadow: 0 8px 20px rgba(255, 90, 120, 0.5);
+    }
+    .left-arrow {
+      left: 20px;
+    }
+    .right-arrow {
+      right: 20px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 2.8rem;
+      color: #ff6f91;
+      cursor: pointer;
+      background: #ffe6eb;
+      border-radius: 50%;
+      padding: 4px 12px 8px 12px;
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.5);
+      user-select: none;
+      border: none;
+      z-index: 130;
+      transition: background-color 0.3s ease;
+    }
+    .close-btn:hover {
+      background-color: #ff8ca3;
+      color: white;
+    }
+    .cover-page {
+      position: fixed;
+      z-index: 2000;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, #ffe0ec, #fffaf0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .cover-content {
+      max-width: 600px;
+      padding: 40px;
+      background: #fff0f6;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(255, 140, 163, 0.5);
+      border: 4px dashed #ffb6c1;
+    }
+    .cover-title {
+      font-size: 2.5rem;
+      color: #ff6f91;
+      font-family: 'Comic Sans MS', cursive;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #ffb6c1;
+    }
+    .cover-subtitle {
+      font-size: 1.2rem;
+      color: #c45a7b;
+      margin-bottom: 30px;
+    }
+    .start-button {
+      background-color: #ff8ca3;
+      color: white;
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .start-button:hover {
+      background-color: #ff5a78;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ff6f91;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fff0f6;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <!-- Cover Page -->
+  <div id="coverPage" class="cover-page">
+    <div class="cover-content">
+      <h1 class="cover-title">Chào mừng đến với chuyến tàu thời gian hehe 💖</h1>
+      <p class="cover-subtitle">Cùng nhau nhìn lại những khoảnh khắc đáng nhớ nhé 🌈</p>
+      <button id="startBtn" class="start-button">Bắt đầu hành trình ✨</button>
+    </div>
+  </div>
+
+  <!-- Main Content: Title + Gallery Thumbnails -->
+  <div id="mainContent">
+    <h1>Vth và từng mốc thời gian của cô ấy</h1>
+    <div class="gallery" id="gallery"></div>
+  </div>
+
+  <script>
+    const photos = [
+      {
+        src: 'xuânn.png',
+        alt: 'Memory 1',
+        caption: 'Summer days, 2018 🌸',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616408.png',
+        stickerClass: 'sticker1'
+      },
+      {
+        src: 'cs.png',
+        alt: 'Memory 2',
+        caption: 'First road trip adventure 🚗',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616497.png',
+        stickerClass: 'sticker2'
+      },
+      {
+        src: 'hè.png',
+        alt: 'Memory 3',
+        caption: '+1 hè',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'hhh.png',
+        alt: 'Memory 3',
+        caption: 'Học hành đồ',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: 'sn.jpg',
+        alt: 'Memory 3',
+        caption: 'Sinh nhật năm ngoái he',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'xuân.png',
+        alt: 'Memory 3',
+        caption: 'Hè năm nay he🍂',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+     
+
+      {
+        src: 'ngầu.png',
+        alt: 'Memory 3',
+        caption: 'Ngầu he ngầu he',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'hehe.png',
+        alt: 'Memory 3',
+        caption: 'Dịu dàng đồ',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'nha.png',
+        alt: 'Memory 3',
+        caption: 'Cạ nhà thương nhao',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: '2.png',
+        alt: 'Memory 3',
+        caption: 'Sẹc xi',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'D.png',
+        alt: 'Memory 3',
+        caption: 'Đúm là lần đầu lúc nào cũm đẹp nhứt :))',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'trung.png',
+        alt: 'Memory 3',
+        caption: ' :))',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'thu.png',
+        alt: 'Memory 3',
+        caption: ' Đủ 4 mùa luôn mà :))',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      
+      {
+        src: 'gs.png',
+        alt: 'Memory 3',
+        caption: ' Giáng xinh',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      
+      {
+        src: 'qb.png',
+        alt: 'Memory 3',
+        caption: ' Ê nhìn giống mấy chị giáu giàu :))',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: 'ng.png',
+        alt: 'Memory 3',
+        caption: 'Thời còn kẻ mắt',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+      {
+        src: '3.png',
+        alt: 'Memory 3',
+        caption: 'Nhớ tóc dài chưa',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '4.png',
+        alt: 'Memory 3',
+        caption: 'wa',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '7.png',
+        alt: 'Memory 3',
+        caption: 'waa',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '6.png',
+        alt: 'Memory 3',
+        caption: 'Sao em lại đeo khẩu trang thế :))',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '8.png',
+        alt: 'Memory 3',
+        caption: 'Đỉnh)',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+
+      {
+        src: '9.png',
+        alt: 'Memory 3',
+        caption: '+1 giáng sinh',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '10.png',
+        alt: 'Memory 3',
+        caption: 'Điệu thé',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '11.png',
+        alt: 'Memory 3',
+        caption: 'Màu ảnh này ghê thật :))',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '12.png',
+        alt: 'Memory 3',
+        caption: 'Phố vll',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '13.png',
+        alt: 'Memory 3',
+        caption: 'Ngày xưa chất vll',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '14.png',
+        alt: 'Memory 3',
+        caption: 'Ôi ngày xưa',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      {
+        src: '00.png',
+        alt: 'Memory 3',
+        caption: 'Ai cũng phải bắt đầu từ đâu đó...',
+        sticker: 'https://cdn-icons-png.flaticon.com/512/616/616491.png',
+        stickerClass: 'sticker3'
+      },
+
+      
+
+    ];
+
+    const gallery = document.getElementById('gallery');
+    const mainContent = document.getElementById('mainContent');
+    const coverPage = document.getElementById('coverPage');
+    let currentIndex = 0;
+
+    // Hàm tạo thumbnails động
+    photos.forEach((photo, index) => {
+      const thumbDiv = document.createElement('div');
+      thumbDiv.className = 'thumb';
+      thumbDiv.dataset.index = index;
+
+      thumbDiv.innerHTML = `
+        <img src="${photo.src}" alt="${photo.alt}" />
+        <div class="thumb-caption">${photo.caption}</div>
+      `;
+      gallery.appendChild(thumbDiv);
+
+      thumbDiv.addEventListener('click', () => openPage(index));
+    });
+
+    // Hàm tạo trang fullscreen động và đăng ký sự kiện điều hướng
+    photos.forEach((photo, index) => {
+      const pageDiv = document.createElement('div');
+      pageDiv.className = 'fullscreen-page';
+      pageDiv.id = `page${index}`;
+
+      pageDiv.innerHTML = `
+        <button class="close-btn" aria-label="Close">&times;</button>
+        <button class="nav-arrow left-arrow" aria-label="Previous">&#10094;</button>
+        <div class="photo-frame">
+          <img src="${photo.src}" alt="${photo.alt}" />
+          <img src="${photo.sticker}" alt="Sticker" class="sticker ${photo.stickerClass}" />
+        </div>
+        <div class="caption">${photo.caption}</div>
+        <button class="nav-arrow right-arrow" aria-label="Next">&#10095;</button>
+      `;
+
+      document.body.appendChild(pageDiv);
+
+      pageDiv.querySelector('.close-btn').addEventListener('click', closePage);
+      pageDiv.querySelector('.left-arrow').addEventListener('click', () => {
+        currentIndex = (index - 1 + photos.length) % photos.length;
+        openPage(currentIndex);
+      });
+      pageDiv.querySelector('.right-arrow').addEventListener('click', () => {
+        currentIndex = (index + 1) % photos.length;
+        openPage(currentIndex);
+      });
+    });
+
+    // Hàm mở trang fullscreen theo index
+    function openPage(index) {
+      // Ẩn tất cả trang fullscreen trước
+      document.querySelectorAll('.fullscreen-page').forEach(page => page.classList.remove('active'));
+      // Hiện trang cần mở
+      document.getElementById(`page${index}`).classList.add('active');
+      currentIndex = index;
+      // Ẩn gallery và tiêu đề khi mở fullscreen
+      mainContent.style.display = 'none';
+      // Ẩn cover page nếu đang hiện
+      coverPage.style.display = 'none';
+      // Cuộn lên đầu trang để xem ảnh rõ
+      window.scrollTo(0,0);
+    }
+
+    // Hàm đóng trang fullscreen, hiện lại gallery
+    function closePage() {
+      document.querySelectorAll('.fullscreen-page').forEach(page => page.classList.remove('active'));
+      mainContent.style.display = 'block';
+    }
+
+    // Bắt đầu từ cover page, khi nhấn nút "Bắt đầu" thì hiện mainContent
+    document.getElementById('startBtn').addEventListener('click', () => {
+      coverPage.style.display = 'none';
+      mainContent.style.display = 'block';
+    });
+  </script>
+    <audio id="bgMusic" autoplay loop>
+        <source src="lovesong2.mp3" type="audio/mpeg" />
+      </audio>
+    
+      <style>
+        audio {
+          display: none;
+        }
+      </style>
+</body>
+</html>

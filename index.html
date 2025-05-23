@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Game</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container" role="main">
+  <h1>Chơi xong thì cho xem :))</h1>
+  <div class="game-area">
+    <section id="puzzle" class="puzzle-board" aria-label="Puzzle board">
+      <!-- Các ô slot để thả mảnh ghép -->
+    </section>
+    <aside class="side-panel" aria-label="Sample image and pieces">
+      <div class="sample-image" aria-label="Sample image of the puzzle">
+        <img src="love.jpg" alt="Sample puzzle image" />
+      </div>
+      <div id="pieces" class="pieces-container" aria-label="Puzzle pieces to drag">
+        <!-- Các mảnh ghép sẽ được tạo động -->
+      </div>
+    </aside>
+  </div>
+</div>
+<audio id="bgMusic" autoplay loop>
+  <source src="lovesong.mp3" type="audio/mpeg" />
+</audio>
+
+<style>
+  audio {
+    display: none;
+  }
+</style>
+
+
+<script src="script.js"></script>
+</body>
+</html>
